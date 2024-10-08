@@ -11,6 +11,7 @@
     <url>http://maven.apache.org</url>
     <modules>
         <module>risk-api</module>
+        <module>risk-flink</module>
     </modules>
 
     <properties>
@@ -83,6 +84,31 @@
             <scope>provided</scope>
         </dependency>
     </dependencies>
+
+
+    <!--
+     知识点：
+
+     1.
+     scope标签的值：
+     compile: 默认值，依赖会参与编译，测试，以及打包
+     test: 依赖只会参与测试
+     provided：依赖不会加入打包，只运行在编译阶段以及测试阶段，运行阶段不包含这个依赖
+     import: 依赖实现多继承，import值只能用于 dependencyManagement
+
+     2.
+     classifier标签：
+     可以将包的坐标定位扩展至： groupId-artifactId-version-classifier
+
+     3.
+     Option标签：使得依赖没有传递性
+
+    A依赖C，B依赖A，B使用C依赖包的方法，C依赖写入了A的jar包里。
+    如果Option标签的值是True, C依赖没有写入了A的jar包里，
+    B无法使用C依赖包的方法，
+    B想使用C依赖包的方法，必须对C依赖包的方法做显示的引入。
+
+     -->
 
 
     <dependencyManagement>
