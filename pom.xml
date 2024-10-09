@@ -13,7 +13,7 @@
         <module>risk-api</module>
         <module>risk-flink</module>
         <module>risk-util</module>
-        <module>api-common</module>
+        <module>risk-common</module>
     </modules>
 
     <properties>
