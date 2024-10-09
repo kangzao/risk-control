@@ -12,6 +12,8 @@
     <modules>
         <module>risk-api</module>
         <module>risk-flink</module>
+        <module>risk-util</module>
+        <module>api-common</module>
     </modules>
 
     <properties>
@@ -119,6 +121,8 @@
                 <artifactId>spring-boot-dependencies</artifactId>
                 <version>${springboot.version}</version>
                 <type>pom</type>
+                <!-- 导入范围。仅用于 <dependencyManagement> 中，用于导入其他 POM 文件中的依赖管理 -->
+                <!-- <dependencyManagement> 中的 <dependencies> 元素的 scope 默认为 import。  -->
                 <scope>import</scope>
             </dependency>
 
