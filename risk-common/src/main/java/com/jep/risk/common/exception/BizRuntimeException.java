@@ -27,7 +27,6 @@ import lombok.extern.slf4j.Slf4j;
 public class BizRuntimeException extends RuntimeException {
 
     /**
-     * author: Imooc
      * description: 自定义异常类构造方法
      * @param info:  自定义异常枚举对象
      * @return null
