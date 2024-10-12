@@ -19,7 +19,7 @@ spring:
         # 最大建立连接等待时间
         max-wait: 1ms
 
-# 自定义的配置，所有会爆红
+# 自定义的配置
 hbase:
   conf:
     confMaps:
