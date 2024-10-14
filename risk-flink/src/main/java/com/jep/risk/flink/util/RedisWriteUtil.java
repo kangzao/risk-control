@@ -5,11 +5,9 @@ import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.api.java.utils.ParameterTool;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.connectors.redis.RedisSink;
-import org.apache.flink.streaming.connectors.redis.common.config.FlinkJedisClusterConfig;
+import org.apache.flink.streaming.connectors.redis.common.config.FlinkJedisPoolConfig;
 
 import java.net.InetSocketAddress;
-import java.util.HashSet;
-import java.util.Set;
 
 
 /**
@@ -55,7 +53,7 @@ public class RedisWriteUtil {
      * *********************/
 
     //Jedis配置
-    private static FlinkJedisClusterConfig JEDIS_CONF = null;
+    private static FlinkJedisPoolConfig JEDIS_CONF = null;
 
     static {
         ParameterTool parameterTool = ParameterUtil.getParameters();
@@ -68,13 +66,10 @@ public class RedisWriteUtil {
          *
          * *********************/
         InetSocketAddress inetSocketAddress = new InetSocketAddress(host, Integer.parseInt(port));
+        JEDIS_CONF = new FlinkJedisPoolConfig.Builder().setHost(host).setPort(Integer.parseInt(port))
+                .setTestOnBorrow(true).build();
 
-        Set<InetSocketAddress> set = new HashSet<>();
-        set.add(inetSocketAddress);
-        JEDIS_CONF = new FlinkJedisClusterConfig
-                .Builder()
-                .setNodes(set)
-                .build();
+
     }
 
 
